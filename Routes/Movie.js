@@ -5,7 +5,7 @@ const Movie = require('../Models/Movie');
 //Add Movies
 
 
-router.post('/api/addMovie', async (req, res) => {
+router.post('/back/addMovie', async (req, res) => {
     try {
       const newRecipe = new Movie({
         mname: req.body.mname,
@@ -27,7 +27,7 @@ router.post('/api/addMovie', async (req, res) => {
 
 //display
 
-  router.get('/api/movieList', async (req, res) => {
+  router.get('/back/movieList', async (req, res) => {
     try {
       const Movielist = await Movie.find({});
       res.status(200).json(Movielist);
@@ -39,7 +39,7 @@ router.post('/api/addMovie', async (req, res) => {
 
   // Delete
 
-  router.delete('/api/delete/:id',async(req,res)=>{
+  router.delete('/back/delete/:id',async(req,res)=>{
     try{
   
         //find the item by its id and deleted it
@@ -56,7 +56,7 @@ router.post('/api/addMovie', async (req, res) => {
 
   //Update
 
-  router.put('/api/updateitem/:id',async(req,res)=>{
+  router.put('/back/updateitem/:id',async(req,res)=>{
     try{
         //find the item by its id and update it
         const updateItem =await Movie.findByIdAndUpdate(req.params.id,{$set:req.body});
